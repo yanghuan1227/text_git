@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //for循环的封装
+    function sun(arr) {
+        var sum = 0;
+        for (i = 0; i < arr.length; i++) {
+            sum += parseFloat(arr[i]);
+        }
+        return sum;
+    }
+    //输入1的封装 
+    function one() {
+        var number = prompt('请输入你要求和的数字以逗号隔开');
+        var arr = number.split(',');
+        var sum = sun(arr);
+        return sum;
+
+    }
+    //补全0的封装
+    function patchZero(number) {
+        if (number < 10) {
+            number = '0' + number;
+
+        }
+        return number;
+    }
+    //输入2的封装
+    function times() {
+        var date = new Date();
+
+        var y = date.getFullYear();
+        var M = date.getMonth() + 1;
+        var d = date.getDate();
+        var h = date.getHours();
+        var m = date.getMinutes();
+        var s = date.getSeconds();
+
+        M = patchZero(M);
+        d = patchZero(d);
+        h = patchZero(h);
+        m = patchZero(m);
+        s = patchZero(s);
+
+        var time = y + '-' + M + '-' + d + ' ' + h + ':' + m + ':' + s;
+        return time;
+    }
+
+
+
+    while (true) {
+        var msg = prompt('输入1求总和\n输入2求当前的时间\n输入3获得一个随机笑话\n输入q退出');
+        if (msg === 'q') {
+            alert('退出');
+            break;
+        }
+        switch (msg) {
+            case '1':
+            case '总和':
+                var sum = one();
+                alert(sum);
+                break;
+
+            case '2':
+            case '时间':
+                var time = times();
+                alert(time);
+                break;
+            case '3':
+            case '笑话':
+                var joke = ['笑话1', '笑话2', '笑话3', '笑话4', '笑话5'];
+                var arr = Math.floor(Math.random() * joke.length);
+                alert(joke[arr]);
+                break;
+            default:
+                // 如果输入的没有上述的判断，就提示我不会
+                alert('我听不明白');
+                break;
+
+        }
+    }
+</script>
+
+</html>
