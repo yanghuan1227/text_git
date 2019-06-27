@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //封装询问部分
+    function Xiaona() {
+        this.ask = function () {
+            var msg = prompt("你好，我是传智小娜，你的语音助手~~~~~~~\n" +
+                "输入《编号》或《关键词》选择功能，输入q退出聊天\n" +
+                " 1.计算《总和》\n" +
+                " 2.获取《时间》\n" +
+                " 3.讲个《笑话》\n");
+            return msg;
+        }
+        this.caculate = function () {
+            var numbers = prompt('请输入你要求和的数字，并以逗号的形式隔开');
+            var arr = numbers.split(',');
+            var sum = 0;
+            for (i = 0; i < arr.length; i++) {
+                sum += parseFloat(arr[i]);
+            }
+            alert(sum);
+        }
+        this.time = function () {
+            var date = new Date();
+            var y = date.getFullYear();
+            var M = date.getMonth() + 1;
+            var d = date.getDate();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+            //补全0
+            M = M < 10 ? '0' + M : M;
+            d = d < 10 ? '0' + d : d;
+            h = h < 10 ? '0' + h : h;
+            m = m < 10 ? '0' + m : h;
+            s = s < 10 ? '0' + s : s;
+            var time = y + '-' + M + '-' + d + ' ' + h + ':' + m + ':' + s;
+            alert(time);
+        }
+        this.joke = function () {
+            var joke = ['笑话1', '笑话2', '笑话3', '笑话4', '笑话5'];
+            var s = Math.floor(Math.random() * joke.length);
+            alert(joke[s]);
+        }
+
+    }
+    var xn = new Xiaona();//创建一个小娜的对象
+    while (true) {
+        var msg = xn.ask();
+        if (msg === 'q') {
+            alert('你已经不爱小娜了吗？');
+            break;
+        }
+        switch (msg) {
+            case '1':
+            case '总和':
+                var msg = xn.caculate();
+                break;
+
+            case '2':
+            case '时间':
+                xn.time();
+                break;
+
+            case '3':
+            case '笑话':
+                xn.joke();
+                break;
+
+        }
+    }
+</script>
+
+</html>
